@@ -3,78 +3,30 @@ package main
 import "fmt"
 
 func main() {	
-	// Area de un Cuadrado
+	// Paquete Fmt
 
-	const baseCuadrado int = 10
-    areaCuadrado:= baseCuadrado * baseCuadrado
+	//Println
+	helloMessage:= "Hello"
+	worldMessage:= "World"
 
-	fmt.Println("Área Cuadraro:", areaCuadrado)
+	fmt.Println(helloMessage, worldMessage)
+	fmt.Println(helloMessage, worldMessage)
 
-	// Suma
+	//Printf
+	nombre:= "Platzi"
+	cursos:= 500
 
-	x:= 10
-	y:= 20
-	result:= x+y
+	fmt.Printf("%s tiene mas de %d cursos \n", nombre, cursos)
+	fmt.Printf("%v tiene mas de %v cursos \n", nombre, cursos)
 
-	fmt.Println("Suma:", result)
+	//Sprintf
 
-	// Resta
+	message:= fmt.Sprintf("%s tiene mas de %d cursos", nombre, cursos)
+	fmt.Println(message)
 
-	result =  y - x
-	fmt.Println("Resta:", result)
+	// Tipo de Dato
 
-	// Multiplicacion
-
-	result = x * y
-	fmt.Println("Multiplicación:", result)
-
-	// División
-
-	result = y/x
-	fmt.Println("División:", result)
-
-	//Modulo
-
-	result = y % x
-	fmt.Println("Modulo:", result)
-
-	// Incremental
-
-	x++
-	fmt.Println("Incremental:", x)
-
-	// Decremental
-
-	x--
-	fmt.Println("Decremental:", x)
-
-	// Retos
-
-	// Rectangulo base * altura
-
-	baseRectangulo:= 10
-	alturaRectangulo:= 40
-	areaRectangulo:= baseRectangulo * alturaRectangulo
-
-	fmt.Println("Área Rectangulo:", areaRectangulo)
-
-	// Trapecio (Base + base) * altura / 2
-	
-	base:= 10
-	Base:= 40
-	altura:= 30
-
-	areaTrapecio:= ((base+Base) * altura) / 2
-
-	fmt.Println("Área Trapecio:", areaTrapecio)
-
-	// Circulo pi * radio 2
-
-	var radio float64= 6
-	const pi float64 = 3.14159
-
-	areaCirculo:= pi * (radio*radio)
-
-	fmt.Println("Área Circulo:", areaCirculo)
+	fmt.Printf("helloMessage: %T \n", helloMessage)
+	fmt.Printf("cursos: %T \n", cursos)
 
 }
