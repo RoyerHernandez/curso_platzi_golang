@@ -4,26 +4,24 @@ import "fmt"
 
 func main() {
 
-	// Switch
+	// Defer
+
+	defer fmt.Println("Hola")
+	fmt.Println("Mundo")
+
+	// Continue y Break
+
+	for i := 0 ; i < 10; i++{
+		fmt.Println(i)
+		if(i == 2){
+			fmt.Println("Es 2")
+			continue
+		}
+
+		if(i ==8){
+			fmt.Println("Es 8")
+			break
+		}
+	}
 	
-
-	switch modulo := 4 % 2; modulo {
-	case 0:
-		fmt.Println("es par")
-	default:
-		fmt.Println("es impar")
-	}
-
-	// Sin Condicion
-
-	value:= 300
-
-	switch {
-	case value > 200:
-		fmt.Println("Es mayor a 200")
-	case value < 0:
-		fmt.Println("ES menor a cero") 
-	default:
-		fmt.Println("No hay condicion")
-	}
 }
