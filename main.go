@@ -1,16 +1,21 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func isPalindromo(texto string){
 
+	minText := strings.ToLower(texto)
+
 	textReverse:= ""
 
-	for i:= len(texto) - 1; i >=0; i--{
-		textReverse += string(texto[i])
+	for i:= len(minText) - 1; i >=0; i--{
+		textReverse += string(minText[i])
 	}
 
-	if(textReverse == texto){
+	if(textReverse == minText){
 		fmt.Println("Es un Palindromo")
 	}else{
 		fmt.Println("No es un Palindromo")
@@ -18,9 +23,13 @@ func isPalindromo(texto string){
 
 }
 
+func ToLower(texto string) {
+	panic("unimplemented")
+}
+
 func main() {
 
-	isPalindromo("amor al roma")
+	isPalindromo("aMor a roma")
 
 	slice:= []string{"Hola", "como", "estas"}
 
