@@ -37,6 +37,8 @@ func main() {
 
 	myPc.Ping()
 
+	fmt.Println(myPc.String())
+
 	fmt.Println(myPc)
 	myPc.DuplicateRam()
 
