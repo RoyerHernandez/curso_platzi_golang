@@ -30,21 +30,22 @@ func main() {
 	*b = 100
 	fmt.Println(a)
 
-	var myPc = pk.Pc{}
+	var myPc pk.Pc
 	myPc.Ram = 16
 	myPc.Disk = 500
 	myPc.Brand = "MSI"
 
-	pk.Ping()
+	myPc.Ping()
 
 	fmt.Println(myPc)
+	myPc.DuplicateRam()
 
 	fmt.Println(myPc)
+	myPc.DuplicateRam()
 
 	fmt.Println(myPc)
+	myPc.DuplicateRam()
 
 	fmt.Println(myPc)
-
-	fmt.Println(myPc)
-
+	myPc.DuplicateRam()
 }
