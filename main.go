@@ -1,53 +1,51 @@
 package main
 
-import (
-	pk "curso_platzi_golang/src/packagePunteros"
-	"fmt"
-)
+import "fmt"
 
-type pc struct {
-	ram   int
-	disk  int
-	brand string
+type figuras2D interface{
+	area() float64
 }
 
-func (myPc pc) ping() {
-	fmt.Println(myPc.brand, "pong")
+type cuadrado struct {
+	base float64
 }
 
-func (myPc *pc) duplicateRam() {
-	myPc.ram = myPc.ram * 2
+type rectcangulo struct{
+	base float64
+	altura float64
+}
+
+type triangulo struct{
+	lado float64
+}
+
+func (c cuadrado) area() float64{
+	return c.base * c.base
+}
+
+func (r rectcangulo) area() float64{
+	return r.base * r.altura
+}
+
+func (t triangulo) area() float64{
+	return t.lado * t.lado * t.lado
+}
+
+func calcular(f figuras2D){
+	fmt.Println("Area :", f.area())
 }
 
 func main() {
+	miCuadrado := cuadrado{base: 2}
+	miRectangulo := rectcangulo{base: 4, altura: 2}
+	miTriangulo := triangulo{lado: 3}
 
-	a := 50
-	b := &a
+	// Lista de interfaces
+	miInterface := []interface{}{"Hola", 23, 32.3, "Hello"}
 
-	fmt.Println(b)
-	fmt.Println(*b)
+	calcular(miCuadrado)
+	calcular(miRectangulo)
+	calcular(miTriangulo)
 
-	*b = 100
-	fmt.Println(a)
-
-	var myPc pk.Pc
-	myPc.Ram = 16
-	myPc.Disk = 500
-	myPc.Brand = "MSI"
-
-	myPc.Ping()
-
-	fmt.Println(myPc.String())
-
-	fmt.Println(myPc)
-	myPc.DuplicateRam()
-
-	fmt.Println(myPc)
-	myPc.DuplicateRam()
-
-	fmt.Println(myPc)
-	myPc.DuplicateRam()
-
-	fmt.Println(myPc)
-	myPc.DuplicateRam()
+	fmt.Println(miInterface...)
 }
