@@ -1,51 +1,23 @@
 package main
 
-import "fmt"
-
+import (
+pk "curso_platzi_golang/src/packageFiguras"
+"fmt"
+)
 type figuras2D interface{
-	area() float64
-}
-
-type cuadrado struct {
-	base float64
-}
-
-type rectcangulo struct{
-	base float64
-	altura float64
-}
-
-type triangulo struct{
-	lado float64
-}
-
-func (c cuadrado) area() float64{
-	return c.base * c.base
-}
-
-func (r rectcangulo) area() float64{
-	return r.base * r.altura
-}
-
-func (t triangulo) area() float64{
-	return t.lado * t.lado * t.lado
-}
+	Area() float64
+	}
 
 func calcular(f figuras2D){
-	fmt.Println("Area :", f.area())
+	fmt.Println("El área es:", f.Area())
 }
 
 func main() {
-	miCuadrado := cuadrado{base: 2}
-	miRectangulo := rectcangulo{base: 4, altura: 2}
-	miTriangulo := triangulo{lado: 3}
+	myCuadrado := pk.Cuadrado{Nombre:"Cuadrado", Base: 5}
+	myRectangulo := pk.Rectangulo{Nombre: "Rectangulo", Base: 15, Altura: 26}
+	myTriangulo := pk.Triangulo{Nombre: "Triangulo",Lado: 3}
 
-	// Lista de interfaces
-	miInterface := []interface{}{"Hola", 23, 32.3, "Hello"}
-
-	calcular(miCuadrado)
-	calcular(miRectangulo)
-	calcular(miTriangulo)
-
-	fmt.Println(miInterface...)
+	calcular(myCuadrado)
+	calcular(myRectangulo)
+	calcular(myTriangulo)
 }
