@@ -1,21 +1,45 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
-//"time"
-
-func say(text string, c chan<- string){
+func message(text string, c chan string){
 	c <- text
 }
 
 func main() {
 
-	c := make(chan string, 1)
+	c := make(chan string, 2)
 
-	fmt.Println("Hello")
+	c <- "Mensaje1"
+	c <- "Mensaje2"
 
-	go say("Bye", c)
+	fmt.Println(len(c), cap(c))
 
-	fmt.Println(<-c)
-    
+	// Range & Close
+	 close(c)
+	// c <- "Mensaje2"
+
+	for message := range c {
+		fmt.Println(message)
+	}
+
+	//Select
+
+	email1 := make(chan string)
+	email2 := make(chan string)
+
+	go message("Mensaje1", email1)
+	go message("Mensaje2", email2)
+
+	for i:=0; i<2; i++{
+		select{
+		case em1 := <-email1:
+			fmt.Println("El mensaje se recibio del email1", em1)
+		case em2 := <-email2:
+			fmt.Println("El mensaje se recibio del email2", em2)	
+		}
+	}
+
 }
