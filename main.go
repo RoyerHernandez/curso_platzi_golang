@@ -1,45 +1,17 @@
 package main
 
 import (
-	"fmt"
+	"net/http"
+	"github.com/labstack/echo"
 )
-
-func message(text string, c chan string){
-	c <- text
-}
-
 func main() {
 
-	c := make(chan string, 2)
+	// Instanciar echo
+	e := echo.New()
 
-	c <- "Mensaje1"
-	c <- "Mensaje2"
-
-	fmt.Println(len(c), cap(c))
-
-	// Range & Close
-	 close(c)
-	// c <- "Mensaje2"
-
-	for message := range c {
-		fmt.Println(message)
-	}
-
-	//Select
-
-	email1 := make(chan string)
-	email2 := make(chan string)
-
-	go message("Mensaje1", email1)
-	go message("Mensaje2", email2)
-
-	for i:=0; i<2; i++{
-		select{
-		case em1 := <-email1:
-			fmt.Println("El mensaje se recibio del email1", em1)
-		case em2 := <-email2:
-			fmt.Println("El mensaje se recibio del email2", em2)	
-		}
-	}
-
+	// Crear Ruta
+	e.GET("/", func(c echo.Context) error {
+		return c.String(http.StatusOK, "Hello World")
+	})
+	e.Logger.Fatal(e.Start(":1323"))
 }
